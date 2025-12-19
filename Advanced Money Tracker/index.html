@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Money Counter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2><i class="fas fa-wallet"></i> Advanced Money Tracker</h2>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="transactions">Transactions</div>
+            <div class="tab" data-tab="analytics">Analytics</div>
+            <div class="tab" data-tab="categories">Categories</div>
+        </div>
+
+        <div class="tab-content active" id="transactions">
+            <div class="type-toggle">
+                <button class="active" data-type="all">All</button>
+                <button data-type="income">Income</button>
+                <button data-type="expense">Expense</button>
+            </div>
+
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="0.00" step="0.01" />
+                </div>
+
+                <div class="input-field">
+                    <label for="type">Type</label>
+                    <select id="type">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="">Select Category</option>
+                        <optgroup label="Income">
+                            <option value="Salary">Salary</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Investment">Investment</option>
+                            <option value="Gift">Gift</option>
+                            <option value="Other Income">Other Income</option>
+                        </optgroup>
+                        <optgroup label="Expense">
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Health">Health</option>
+                            <option value="Education">Education</option>
+                            <option value="Other Expense">Other Expense</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" />
+                </div>
+
+                <div class="input-field" style="grid-column: span 2;">
+                    <label for="note">Note</label>
+                    <textarea id="note" rows="2" placeholder="Add a note (optional)"></textarea>
+                </div>
+
+                <button onclick="addTransaction()" style="grid-column: span 2;">
+                    <i class="fas fa-plus"></i> Add Transaction
+                </button>
+            </div>
+
+            <div class="filter-group">
+                <h3>Filters</h3>
+                <div class="filter-controls">
+                    <div>
+                        <label for="filter-category">Category:</label>
+                        <select id="filter-category" onchange="filterTransactions()">
+                            <option value="all">All</option>
+                            <optgroup label="Income">
+                                <option value="Salary">Salary</option>
+                                <option value="Freelance">Freelance</option>
+                                <option value="Investment">Investment</option>
+                                <option value="Gift">Gift</option>
+                                <option value="Other Income">Other Income</option>
+                            </optgroup>
+                            <optgroup label="Expense">
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Bills">Bills</option>
+                                <option value="Health">Health</option>
+                                <option value="Education">Education</option>
+                                <option value="Other Expense">Other Expense</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="date-range">
+                        <label for="from-date">From:</label>
+                        <input type="date" id="from-date" onchange="filterTransactions()" />
+                        <label for="to-date">To:</label>
+                        <input type="date" id="to-date" onchange="filterTransactions()" />
+                    </div>
+
+                    <div>
+                        <label for="search">Search:</label>
+                        <input type="text" id="search" placeholder="Search notes..." oninput="filterTransactions()" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary">
+                <div class="summary-card income">
+                    <h3>Total Income</h3>
+                    <div class="amount" id="total-income">₹0.00</div>
+                </div>
+                <div class="summary-card expense">
+                    <h3>Total Expense</h3>
+                    <div class="amount" id="total-expense">₹0.00</div>
+                </div>
+                <div class="summary-card balance">
+                    <h3>Balance</h3>
+                    <div class="amount" id="total-balance">₹0.00</div>
+                </div>
+            </div>
+
+            <ul class="money-list" id="moneyList">
+                <!-- Transactions will be added here dynamically -->
+            </ul>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-coins"></i>
+                <h3>No transactions found</h3>
+                <p>Add your first transaction to get started</p>
+                <button onclick="document.getElementById('amount').focus()">
+                    <i class="fas fa-plus"></i> Add Transaction
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="analytics">
+            <h3 style="margin-bottom: 1.5rem;">Spending Analytics</h3>
+
+            <div class="filter-group">
+                <div class="filter-controls">
+                    <div>
+                        <label for="analytics-period">Period:</label>
+                        <select id="analytics-period" onchange="updateChart()">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                            <option value="all">All Time</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="analytics-type">Type:</label>
+                        <select id="analytics-type" onchange="updateChart()">
+                            <option value="expense">Expenses</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="analyticsChart"></canvas>
+            </div>
+
+            <div class="summary">
+                <div class="summary-card">
+                    <h3>Most Spent Category</h3>
+                    <div class="amount" id="most-spent-category">-</div>
+                    <div id="most-spent-amount" style="font-size: 0.9rem; color: var(--gray);"></div>
+                </div>
+                <div class="summary-card">
+                    <h3>Average Daily</h3>
+                    <div class="amount" id="average-daily">₹0.00</div>
+                </div>
+                <div class="summary-card">
+                    <h3>Transactions</h3>
+                    <div class="amount" id="total-transactions">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="categories">
+            <h3 style="margin-bottom: 1.5rem;">Category Management</h3>
+
+            <div class="input-group" style="grid-template-columns: 1fr auto;">
+                <div class="input-field">
+                    <label for="new-category-name">Category Name</label>
+                    <input type="text" id="new-category-name" placeholder="Enter category name" />
+                </div>
+                <div class="input-field">
+                    <label for="new-category-type">Type</label>
+                    <select id="new-category-type">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+                <button onclick="addCustomCategory()" style="grid-column: span 2;">
+                    <i class="fas fa-plus"></i> Add Category
+                </button>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h4 style="margin-bottom: 1rem;">Your Categories</h4>
+                <div id="custom-categories-list"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                    <!-- Custom categories will be added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Transaction Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Transaction</h3>
+                <button class="close" onclick="closeModal('editModal')">&times;</button>
+            </div>
+            <div class="input-group" style="grid-template-columns: 1fr;">
+                <input type="hidden" id="edit-id">
+                <div class="input-field">
+                    <label for="edit-amount">Amount</label>
+                    <input type="number" id="edit-amount" placeholder="0.00" step="0.01" />
+                </div>
+                <div class="input-field">
+                    <label for="edit-type">Type</label>
+                    <select id="edit-type">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="edit-category">Category</label>
+                    <select id="edit-category">
+                        <option value="">Select Category</option>
+                        <optgroup label="Income">
+                            <option value="Salary">Salary</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Investment">Investment</option>
+                            <option value="Gift">Gift</option>
+                            <option value="Other Income">Other Income</option>
+                        </optgroup>
+                        <optgroup label="Expense">
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Health">Health</option>
+                            <option value="Education">Education</option>
+                            <option value="Other Expense">Other Expense</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="edit-date">Date</label>
+                    <input type="date" id="edit-date" />
+                </div>
+                <div class="input-field">
+                    <label for="edit-note">Note</label>
+                    <textarea id="edit-note" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary" onclick="closeModal('editModal')">Cancel</button>
+                <button onclick="saveEditedTransaction()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="confirmation-dialog">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Are you sure?</h3>
+                <p>This action cannot be undone. The transaction will be permanently deleted.</p>
+                <div class="modal-footer">
+                    <button class="secondary" onclick="closeModal('confirmModal')">Cancel</button>
+                    <button class="danger" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Transaction added successfully</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
