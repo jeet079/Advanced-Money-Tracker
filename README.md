@@ -1,16 +1,17 @@
 # Hi, I'm Jeet
 
-Student Developer focused on learning frontend and backend web development using modern technologies and AI-assisted workflows.
+Student Developer with a strong interest in web development.  
+Currently learning frontend and backend technologies and building practical projects using structured logic and AI-assisted workflows.
 
 ---
 
 ## About Me
 
-- I am a student with strong interest in full-stack web development
-- I use AI tools to accelerate learning and improve productivity
-- Actively building projects to strengthen practical skills
-- Current goal: Secure a web development internship
-- Prefer clean, simple, and maintainable code
+- Student focused on full-stack web development fundamentals
+- Working with both frontend and backend technologies
+- Using AI tools to improve learning speed and code quality
+- Actively preparing for internship opportunities
+- Interested in real-world projects and practical experience
 
 ---
 
@@ -28,10 +29,9 @@ Student Developer focused on learning frontend and backend web development using
 **Database**
 - MySQL
 
-**Tools & Workflow**
+**Tools**
 - Git
 - GitHub
-- AI-assisted development tools
 
 ---
 
@@ -39,27 +39,18 @@ Student Developer focused on learning frontend and backend web development using
 
 ### Majestic Moment – Event Decoration Booking System
 - Web application for browsing and booking event decoration services
-- Category-based event listings with structured data
-- Admin-side management for decorations and bookings
+- Event-based and category-based decoration listings
+- Backend logic with PHP and MySQL
 - Technologies used: PHP, MySQL, HTML, CSS, JavaScript
 
 ---
 
-## Learning Focus
+## Current Focus
 
-- Backend logic and database relationships
-- PHP and Python fundamentals for web applications
-- Clean project structure and reusable code
-- Git and GitHub best practices
-- Preparing for real-world development workflows
-
----
-
-## Open To
-
-- Internship opportunities
-- Collaborative learning projects
-- Beginner-friendly open-source contributions
+- Strengthening core programming concepts
+- Improving backend logic and database design
+- Writing clean and maintainable code
+- Building more real-world practice projects
 
 ---
 
@@ -68,17 +59,34 @@ Student Developer focused on learning frontend and backend web development using
 ### Profile Overview
 ![Profile Views](https://komarev.com/ghpvc/?username=jeet079&label=Profile%20Views&color=0e75b6&style=flat)
 
+---
+
 ### GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jeet079&show_icons=true&count_private=true&include_all_commits=true)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jeet079&show_icons=true&hide_title=true&hide_rank=true)
+
+---
 
 ### Contribution Streak
 ![GitHub Streak](https://streak-stats.demolab.com?user=jeet079)
+
+---
 
 ### Top Languages
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=jeet079&layout=compact)
 
 ---
 
-## Summary
+### Activity Graph
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=jeet079)
 
-Motivated student developer continuously improving skills through hands-on projects and consistent learning. Seeking internship opportunities to gain industry exposure and grow as a professional developer.
+---
+
+## Open to Opportunities
+
+- Internship opportunities
+- Learning-based collaborations
+- Beginner-friendly open-source contributions
+
+---
+
+Thank you for visiting my profile.
