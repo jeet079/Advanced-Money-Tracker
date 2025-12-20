@@ -49,10 +49,6 @@ Git, GitHub
 
 ---
 
-### Contribution Streak
-![GitHub Streak](https://streak-stats.demolab.com?user=jeet079)
-
----
 
 ### Top Languages (Maximum Possible Shown)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=jeet079&layout=compact&langs_count=10)
