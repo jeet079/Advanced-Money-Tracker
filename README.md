@@ -64,10 +64,6 @@ Currently learning frontend and backend technologies and building practical proj
 ### GitHub Stats
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jeet079&show_icons=true&hide_title=true&hide_rank=true)
 
----
-
-### Contribution Streak
-![GitHub Streak](https://streak-stats.demolab.com?user=jeet079)
 
 ---
 
