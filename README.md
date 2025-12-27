@@ -40,21 +40,7 @@ Git, GitHub
 - Backend logic using PHP and MySQL  
 - Technologies used: PHP, MySQL, HTML, CSS, JavaScript  
 
----
 
-## GitHub Statistics
-
-### Overall Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jeet079&show_icons=true&theme=default)
-
----
-
-
-### Top Languages (Maximum Possible Shown)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=jeet079&layout=compact&langs_count=10)
-
-> Note: GitHub limits language visibility.  
-> This shows **up to 10 detected languages**, which is the practical maximum.
 
 ---
 
