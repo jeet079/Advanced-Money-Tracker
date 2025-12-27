@@ -2,7 +2,7 @@
 
 Student Developer with a strong interest in full-stack web development.  
 Currently learning and building projects using modern web technologies and AI-assisted tools.  
-Focused on gaining practical experience through an internship.
+Focused on gaining practical experience through an internship. 
 
 ---
 
